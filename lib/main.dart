@@ -1,3 +1,5 @@
+import 'dart:js_util';
+
 /// Flutter code sample for BottomNavigationBar
 
 // This example shows a [BottomNavigationBar] as it is used within a [Scaffold]
@@ -8,12 +10,15 @@
 // and displays a corresponding message in the center of the [Scaffold].
 
 import 'package:flutter/material.dart';
+import 'package:mysample/about.dart';
+import 'package:mysample/chat.dart';
+import 'package:mysample/map.dart';
 
 void main() => runApp(MyApp());
 
 /// This is the main application widget.
 class MyApp extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Твой аэропомощник';
 
   @override
   Widget build(BuildContext context) {
@@ -37,19 +42,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+  static List<Widget> _widgetOptions = <Widget>[
+    Map(),
+    Chat(),
+    About(),
   ];
 
   void _onItemTapped(int index) {
@@ -70,16 +66,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.map),
+            label: 'Карта',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.chat),
+            label: 'Чат',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.info),
+            label: 'О приложении',
           ),
         ],
         currentIndex: _selectedIndex,
