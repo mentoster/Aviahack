@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_dialogflow/flutter_dialogflow.dart';
 
 class PageDialogflowV1 extends StatefulWidget {
-  PageDialogflowV1({Key key, this.title}) : super(key: key);
+  PageDialogflowV1({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -41,6 +42,7 @@ class _PageDialogflowV1 extends State<PageDialogflowV1> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   void Response(query) async {
     _textController.clear();
     Dialogflow dialogflow = Dialogflow(token: "Your Token");
@@ -93,7 +95,7 @@ class _PageDialogflowV1 extends State<PageDialogflowV1> {
 }
 
 class ChatMessage extends StatelessWidget {
-  ChatMessage({this.text, this.name, this.type});
+  ChatMessage({required this.text, required this.name, required this.type});
 
   final String text;
   final String name;
@@ -127,7 +129,7 @@ class ChatMessage extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            new Text(this.name, style: Theme.of(context).textTheme.subhead),
+            new Text(this.name, style: Theme.of(context).textTheme.subtitle1),
             new Container(
               margin: const EdgeInsets.only(top: 5.0),
               child: new Text(text),

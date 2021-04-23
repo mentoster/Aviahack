@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:mysample/about.dart';
 import 'package:mysample/map.dart';
 
+import 'dialogflow_v1.dart';
+
 void main() => runApp(MyApp());
 
 /// This is the main application widget.
@@ -43,7 +45,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     Map(),
-    builder: (context) => PageDialogflowV1(),
+    PageDialogflowV1(title: '',),
     About(),
   ];
 
