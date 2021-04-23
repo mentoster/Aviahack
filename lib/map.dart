@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Map extends StatefulWidget {
   const Map({Key? key}) : super(key: key);
@@ -8,8 +9,11 @@ class Map extends StatefulWidget {
 class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Index 0: карта',
-    );
+    final Size size = MediaQuery.of(context).size;
+    return Center(
+        child: Image.asset(
+      'assets/images/b_1.png',
+      height: size.height,
+    ));
   }
 }
