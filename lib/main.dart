@@ -1,5 +1,3 @@
-import 'dart:js_util';
-
 /// Flutter code sample for BottomNavigationBar
 
 // This example shows a [BottomNavigationBar] as it is used within a [Scaffold]
