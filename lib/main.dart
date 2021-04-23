@@ -12,8 +12,7 @@ import 'dart:js_util';
 import 'package:flutter/material.dart';
 import 'package:mysample/about.dart';
 import 'package:mysample/map.dart';
-
-import 'dialogflow_v1.dart';
+import 'Chat.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,7 +44,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     Map(),
-    PageDialogflowV1(title: '',),
+    Chat(),
     About(),
   ];
 

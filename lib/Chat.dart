@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_dialogflow/flutter_dialogflow.dart';
+import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
-class PageDialogflowV1 extends StatefulWidget {
-  PageDialogflowV1({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
+class Chat extends StatefulWidget {
   @override
-  _PageDialogflowV1 createState() => new _PageDialogflowV1();
+  _Chat createState() => new _Chat();
 }
 
-class _PageDialogflowV1 extends State<PageDialogflowV1> {
+class _Chat extends State<Chat> {
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
 
@@ -42,13 +37,16 @@ class _PageDialogflowV1 extends State<PageDialogflowV1> {
     );
   }
 
-  // ignore: non_constant_identifier_names
   void Response(query) async {
     _textController.clear();
-    Dialogflow dialogflow = Dialogflow(token: "Your Token");
-    AIResponse response = await dialogflow.sendQuery(query);
+    AuthGoogle authGoogle =
+        await AuthGoogle(fileJson: "assets/jsons/api.json").build();
+    Dialogflow dialogflow =
+        Dialogflow(authGoogle: authGoogle, language: Language.english);
+    AIResponse response = await dialogflow.detectIntent(query);
     ChatMessage message = new ChatMessage(
-      text: response.getMessageResponse(),
+      text: response.getMessage() ??
+          new TypeMessage(response.getListMessage()[0]).platform,
       name: "Bot",
       type: false,
     );
@@ -74,7 +72,7 @@ class _PageDialogflowV1 extends State<PageDialogflowV1> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Dialogflow V1"),
+        title: new Text("Dialogflow V2"),
       ),
       body: new Column(children: <Widget>[
         new Flexible(
@@ -105,7 +103,7 @@ class ChatMessage extends StatelessWidget {
     return <Widget>[
       new Container(
         margin: const EdgeInsets.only(right: 16.0),
-        child: new CircleAvatar(child: new Image.asset("images/icon.png")),
+        child: new CircleAvatar(child: new Image.asset("img/icon.png")),
       ),
       new Expanded(
         child: new Column(
@@ -129,7 +127,7 @@ class ChatMessage extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            new Text(this.name, style: Theme.of(context).textTheme.subtitle1),
+            new Text(this.name, style: Theme.of(context).textTheme.subhead),
             new Container(
               margin: const EdgeInsets.only(top: 5.0),
               child: new Text(text),
