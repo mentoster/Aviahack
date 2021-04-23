@@ -11,14 +11,12 @@ import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:mysample/about.dart';
-import 'package:mysample/chat.dart';
 import 'package:mysample/map.dart';
 
 void main() => runApp(MyApp());
 
 /// This is the main application widget.
 class MyApp extends StatelessWidget {
-  
   static const String _title = 'Твой аэропомощник';
 
   @override
@@ -45,7 +43,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     Map(),
-    Chat(),
+    builder: (context) => PageDialogflowV1(),
     About(),
   ];
 
@@ -77,7 +75,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
             label: 'О приложении',
-            // label: 
+            // label:
           ),
         ],
         currentIndex: _selectedIndex,

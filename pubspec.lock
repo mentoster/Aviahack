@@ -69,13 +69,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_dialogflow_v2:
+  flutter_dialogflow:
     dependency: "direct main"
     description:
-      name: flutter_dialogflow_v2
+      name: flutter_dialogflow
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.2"
+    version: "0.1.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -191,12 +191,5 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  xml:
-    dependency: transitive
-    description:
-      name: xml
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.1.0"
 sdks:
   dart: ">=2.12.0 <3.0.0"

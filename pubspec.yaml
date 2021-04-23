@@ -23,8 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # flutter_dialogflow: ^0.1.3
-  flutter_dialogflow_v2: ^0.3.2
+  flutter_dialogflow: ^0.1.3
   # flutter_dialogflow: ^0.3.2
   # kommunicate_flutter: ^1.1.6
 
