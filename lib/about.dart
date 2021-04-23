@@ -9,7 +9,7 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Index 0: карта',
+      'Index 0: о приложении',
     );
   }
 }
