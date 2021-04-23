@@ -1,4 +1,4 @@
-package com.example.aviahack_flutter
+package com.example.hell
 
 import io.flutter.embedding.android.FlutterActivity
 
