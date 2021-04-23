@@ -73,7 +73,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
-            label: 'О приложении',
+            label: 'info',
             // label:
           ),
         ],
