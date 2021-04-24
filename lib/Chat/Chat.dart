@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
+import 'package:mysample/Chat/StartMessage.dart';
 
 // TODO: сделать привественное сообщение
 // TODO: сделать опрос информации о номере рейса и запихать в информацию на 3 вкладки( время поставить статическое, я не нашёл бесплатное апи)
@@ -13,7 +14,11 @@ class Chat extends StatefulWidget {
 class _Chat extends State<Chat> {
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
-
+  AskNumberOffFight askInfo = new AskNumberOffFight();
+  _Chat() {
+    Response("Приветствие");
+    Response("Сменить номер рейса");
+  }
   Widget _buildTextComposer() {
     return new IconTheme(
       data: new IconThemeData(color: Theme.of(context).accentColor),
@@ -26,7 +31,7 @@ class _Chat extends State<Chat> {
                 controller: _textController,
                 onSubmitted: _handleSubmitted,
                 decoration:
-                    new InputDecoration.collapsed(hintText: "Send a message"),
+                    new InputDecoration.collapsed(hintText: "Напиши сообщение"),
               ),
             ),
             new Container(
