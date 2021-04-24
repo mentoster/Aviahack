@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
+// TODO: сделать привественное сообщение
+// TODO: сделать опрос информации о номере рейса и запихать в информацию на 3 вкладки( время поставить статическое, я не нашёл бесплатное апи)
 class Chat extends StatefulWidget {
   @override
   _Chat createState() => new _Chat();

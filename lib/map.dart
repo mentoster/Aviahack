@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+// TODO: сделать зум, отдаление
+// TODO: сделать иконку нахождения человека
+// TODO: показывать как пройти
+// TODO: показывать положение человека
+// TODO
 class Map extends StatefulWidget {
   const Map({Key? key}) : super(key: key);
   _MapState createState() => _MapState();

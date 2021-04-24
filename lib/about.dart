@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// TODO: взять ифнормацию из чата
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
   _AboutState createState() => _AboutState();
