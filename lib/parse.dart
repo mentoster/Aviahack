@@ -13,12 +13,12 @@ void main() async {
 }
 
 class UserDetails {
-  String name='';
-  int rating=0;
-  int played=0;
-  int won=0;
-  int winningPercentage=0;
-  String image='';
+  String name = '';
+  int rating = 0;
+  int played = 0;
+  int won = 0;
+  int winningPercentage = 0;
+  String image = '';
 
   // UserDetails(
   //     {this.name='',
