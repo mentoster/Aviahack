@@ -51,7 +51,7 @@ class _Chat extends State<Chat> {
     ChatMessage message = new ChatMessage(
       text: response.getMessage() ??
           new TypeMessage(response.getListMessage()[0]).platform,
-      name: "Bot",
+      name: "Айрис",
       type: false,
     );
     setState(() {
@@ -63,7 +63,7 @@ class _Chat extends State<Chat> {
     _textController.clear();
     ChatMessage message = new ChatMessage(
       text: text,
-      name: "Rances",
+      name: "Вы",
       type: true,
     );
     setState(() {
@@ -139,7 +139,9 @@ class ChatMessage extends StatelessWidget {
       ),
       new Container(
         margin: const EdgeInsets.only(left: 16.0),
-        child: new CircleAvatar(child: new Text(this.name[0])),
+        child: new CircleAvatar(
+            child: new Image.network(
+                "https://yt3.ggpht.com/a/AATXAJyI6-JI9qHzW3CX3PbTnj2U2zbbWu_V90qcybiEUg=s900-c-k-c0xffffffff-no-rj-mo")),
       ),
     ];
   }
