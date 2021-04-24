@@ -14,36 +14,10 @@ class _AboutState extends State<About> {
 }
 
 Widget _buildCard() => SizedBox(
-      height: 500,
+      height: 370,
       child: Card(
         child: Column(
           children: [
-            // ListTile(
-            //   title: Text('1625 Main Street',
-            //       style: TextStyle(fontWeight: FontWeight.w500)),
-            //   subtitle: Text('My City, CA 99984'),
-            //   leading: Icon(
-            //     Icons.restaurant_menu,
-            //     color: Colors.blue[500],
-            //   ),
-            // ),
-            // Divider(),
-            // ListTile(
-            //   title: Text('(408) 555-1212',
-            //       style: TextStyle(fontWeight: FontWeight.w500)),
-            //   leading: Icon(
-            //     Icons.contact_phone,
-            //     color: Colors.blue[500],
-            //   ),
-            // ),
-            // ListTile(
-            //   title: Text('costa@example.com'),
-            //   leading: Icon(
-            //     Icons.contact_mail,
-            //     color: Colors.blue[500],
-            //   ),
-            // ),
-
             ListTile(
               title: Text('Ваш рейс: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
@@ -53,45 +27,42 @@ Widget _buildCard() => SizedBox(
                 color: Colors.blue[500],
               ),
             ),
-
             ListTile(
               title: Text('Окончание регистрации: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
               subtitle: Text('13:30'),
               leading: Icon(
-                Icons.gps_fixed,
+                Icons.timelapse_outlined,
                 color: Colors.blue[500],
               ),
             ),
-
             ListTile(
               title: Text('Время вылета: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
               subtitle: Text('13:55'),
               leading: Icon(
-                Icons.gps_fixed,
+                Icons.timelapse_outlined,
                 color: Colors.blue[500],
               ),
             ),
-
             ListTile(
               title: Text('Выход: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
               subtitle: Text('A12'),
               leading: Icon(
-                Icons.gps_fixed,
+                Icons.exit_to_app,
                 color: Colors.blue[500],
               ),
             ),
-            // ListTile(
-            //   title: Text('1625 Main Street',
-            //       style: TextStyle(fontWeight: FontWeight.w500)),
-            //   subtitle: Text('My City, CA 99984'),
-            //   leading: Icon(
-            //     Icons.restaurant_menu,
-            //     color: Colors.blue[500],
-            //   ),
-            // ),
+            ListTile(
+              title: Text('Местоположение',
+                  style: TextStyle(fontWeight: FontWeight.w500)),
+              subtitle: Text('Вы находитесь около входа'),
+              leading: Icon(
+                Icons.explore ,
+                color: Colors.blue[500],
+              ),
+            ),
           ],
         ),
       ),
