@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysample/about.dart';
-import 'package:mysample/map.dart';
+import 'package:mysample/map/map.dart';
 import 'Chat/Chat.dart';
 
 void main() => runApp(MyApp());
