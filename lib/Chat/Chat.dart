@@ -17,8 +17,13 @@ class _Chat extends State<Chat> {
   AskNumberOffFight askInfo = new AskNumberOffFight();
   _Chat() {
     Response("Приветствие");
-    Response("Сменить номер рейса");
+    waitAnswer("Сменить номер рейса");
   }
+  void waitAnswer(query) async {
+    await Future.delayed(const Duration(seconds: 2), () {});
+    Response(query);
+  }
+
   Widget _buildTextComposer() {
     return new IconTheme(
       data: new IconThemeData(color: Theme.of(context).accentColor),
