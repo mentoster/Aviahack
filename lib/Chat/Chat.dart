@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
+import 'package:mysample/Chat/PlaneApi.dart';
 import 'package:mysample/Chat/StartMessage.dart';
 
 // TODO: сделать опрос информации о номере рейса и запихать в информацию на 3 вкладки( время поставить статическое, я не нашёл бесплатное апи)
@@ -10,6 +11,7 @@ class Chat extends StatefulWidget {
 }
 
 class _Chat extends State<Chat> {
+  int numberOfScanMessage = 0;
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
   AskNumberOffFlight askInfo = new AskNumberOffFlight();
@@ -20,6 +22,7 @@ class _Chat extends State<Chat> {
   void waitAnswer(query) async {
     await Future.delayed(const Duration(seconds: 2), () {});
     Response(query);
+    numberOfScanMessage = 1;
   }
 
   Widget _buildTextComposer() {
@@ -57,22 +60,49 @@ class _Chat extends State<Chat> {
     );
   }
 
-  void Response(query) async {
-    _textController.clear();
-    AuthGoogle authGoogle =
-        await AuthGoogle(fileJson: "assets/jsons/api.json").build();
-    Dialogflow dialogflow =
-        Dialogflow(authGoogle: authGoogle, language: Language.russian);
-    AIResponse response = await dialogflow.detectIntent(query);
-    ChatMessage message = new ChatMessage(
-      text: response.getMessage() ??
-          new TypeMessage(response.getListMessage()[0]).platform,
+  void ReadMessage(String message) async {
+    WriteMessage("Это ваш рейс?");
+    AirRoad airRoad = await PlaneApi("Москва", 0);
+    // await Future.delayed(const Duration(seconds: 3), () {});
+    AirPoadShow(airRoad);
+  }
+
+  void AirPoadShow(AirRoad awWrite) {
+    WriteMessage("Название " +
+        awWrite.title +
+        "\nОтправление: " +
+        awWrite.departure +
+        "\nТерминал: " +
+        awWrite.terminal +
+        "\nМодель самолёта: " +
+        awWrite.vehicle);
+  }
+
+  void WriteMessage(String message) {
+    final ChatMessage messageSend = new ChatMessage(
+      text: message,
       name: "Айрис",
       type: false,
     );
     setState(() {
-      _messages.insert(0, message);
+      _messages.insert(0, messageSend);
     });
+  }
+
+  void Response(query) async {
+    if (numberOfScanMessage > 0) {
+      --numberOfScanMessage;
+      ReadMessage(query);
+    } else {
+      _textController.clear();
+      AuthGoogle authGoogle =
+          await AuthGoogle(fileJson: "assets/jsons/api.json").build();
+      Dialogflow dialogflow =
+          Dialogflow(authGoogle: authGoogle, language: Language.russian);
+      AIResponse response = await dialogflow.detectIntent(query);
+      WriteMessage(response.getMessage() ??
+          new TypeMessage(response.getListMessage()[0]).platform);
+    }
   }
 
   void _handleSubmitted(String text) {
