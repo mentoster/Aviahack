@@ -12,7 +12,7 @@ class Chat extends StatefulWidget {
 }
 
 class _Chat extends State<Chat> {
-  int numberOfScanMessage = 0;
+  int numberOfScanMessage = 1;
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
   AirRoad askInfo = new AirRoad();
@@ -27,7 +27,6 @@ class _Chat extends State<Chat> {
 
   void waitAnswer(query) async {
     Response(query);
-    numberOfScanMessage = 1;
   }
 
   Widget _buildTextComposer() {
