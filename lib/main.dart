@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysample/about.dart';
+import 'package:mysample/map/gmap.dart';
 import 'package:mysample/map/map.dart';
 import 'Chat/Chat.dart';
 
@@ -32,7 +33,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
-    Map(),
+    MapSample(),
     Chat(),
     About(),
   ];
