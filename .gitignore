@@ -45,4 +45,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /assets/jsons/api.json
-/android/app/src/main/AndroidManifest.xml
+android/app/src/main/AndroidManifest.xml
