@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mysample/Chat/PlaneApi.dart';
-import 'package:mysample/Chat/StartMessage.dart';
 import 'package:mysample/about.dart';
 import 'package:mysample/map/mapControroller.dart';
 import 'Chat/Chat.dart';
+import 'package:shared_value/shared_value.dart';
 
-void main() => runApp(MyApp());
+// This global SharedValue can be shared across the entire app
+final SharedValue<AirRoad> dataShare = SharedValue(
+  value: AirRoad(), // initial value (optional)
+);
+void main() => runApp(
+      SharedValue.wrapApp(
+        MyApp(),
+      ),
+    );
 
 /// This is the main application widget.
 class MyApp extends StatelessWidget {
@@ -30,10 +38,6 @@ class MyStatefulWidget extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  AskNumberOffFlight _askNumberOffFlight = new AskNumberOffFlight();
-  _MyStatefulWidgetState() {
-    _askNumberOffFlight.numberOfFlight = "1";
-  }
   int _selectedIndex = 0;
   // Chat chat = new Chat();
   static const TextStyle optionStyle =
@@ -58,7 +62,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         children: [
           MapController(),
           Chat(),
-          About(_askNumberOffFlight),
+          About(),
         ],
       )),
       bottomNavigationBar: BottomNavigationBar(

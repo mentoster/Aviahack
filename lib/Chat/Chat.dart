@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:mysample/Chat/PlaneApi.dart';
-import 'package:mysample/Chat/StartMessage.dart';
+import 'package:mysample/main.dart';
+import 'package:shared_value/shared_value.dart';
 
 // TODO: сделать опрос информации о номере рейса и запихать в информацию на 3 вкладки( время поставить статическое, я не нашёл бесплатное апи)
 // TODO: Добавить базу данных?
@@ -14,7 +15,7 @@ class _Chat extends State<Chat> {
   int numberOfScanMessage = 0;
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
-  AskNumberOffFlight askInfo = new AskNumberOffFlight();
+  AirRoad askInfo = new AirRoad();
   _Chat() {
     startChat();
   }
@@ -67,8 +68,8 @@ class _Chat extends State<Chat> {
   void ReadMessage(String messageText) async {
     AirRoad airRoad = await PlaneApi(messageText, 0);
     WriteMessage("Это ваш рейс?");
-    print(airRoad.title);
     AirPoadShow(airRoad);
+    dataShare.value = airRoad;
   }
 
   void AirPoadShow(AirRoad awWrite) {

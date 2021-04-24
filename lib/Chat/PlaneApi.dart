@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:mysample/Static.dart';
 
 class AirRoad {
@@ -13,8 +14,9 @@ class AirRoad {
 Future<AirRoad> PlaneApi(String countryTo, int tryNumber) {
   AirRoad airRoad = new AirRoad();
   String token = ApiKeys.FlyToken;
-  String date = '2021-04-24';
-  print("i work");
+  var now = new DateTime.now();
+  var formatter = new DateFormat('yyyy-MM-dd');
+  String date = formatter.format(now);
   Map map;
   String url = 'https://api.rasp.yandex.net/v3.0/schedule/?apikey=' +
       token +
