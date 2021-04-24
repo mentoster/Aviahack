@@ -42,7 +42,7 @@ class _Chat extends State<Chat> {
     AuthGoogle authGoogle =
         await AuthGoogle(fileJson: "assets/jsons/api.json").build();
     Dialogflow dialogflow =
-        Dialogflow(authGoogle: authGoogle, language: Language.english);
+        Dialogflow(authGoogle: authGoogle, language: Language.russian);
     AIResponse response = await dialogflow.detectIntent(query);
     ChatMessage message = new ChatMessage(
       text: response.getMessage() ??
@@ -103,7 +103,8 @@ class ChatMessage extends StatelessWidget {
     return <Widget>[
       new Container(
         margin: const EdgeInsets.only(right: 16.0),
-        child: new CircleAvatar(child: new Image.asset("img/icon.png")),
+        child:
+            new CircleAvatar(child: new Image.asset("assers/images/icon.png")),
       ),
       new Expanded(
         child: new Column(
