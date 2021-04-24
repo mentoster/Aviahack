@@ -64,8 +64,8 @@ class _Chat extends State<Chat> {
     );
   }
 
-  void ReadMessage(String message) async {
-    AirRoad airRoad = await PlaneApi("Москва", 0);
+  void ReadMessage(String messageText) async {
+    AirRoad airRoad = await PlaneApi(messageText, 0);
     WriteMessage("Это ваш рейс?");
     print(airRoad.title);
     AirPoadShow(airRoad);
