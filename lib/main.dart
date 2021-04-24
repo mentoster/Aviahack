@@ -55,7 +55,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         children: [
           MapSample(),
           Chat(),
-          About(),
+          About(_askNumberOfffight),
         ],
       )),
       bottomNavigationBar: BottomNavigationBar(

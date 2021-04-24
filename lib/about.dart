@@ -3,19 +3,25 @@ import 'package:mysample/Chat/StartMessage.dart';
 
 // TODO: взять ифнормацию из чата
 class About extends StatefulWidget {
-  const About({Key? key}) : super(key: key);
-  // AskNumberOffFlight
+  AskNumberOffFlight _askNumberOffFlight = new AskNumberOffFlight();
+  About(AskNumberOffFlight askNumberOffFlight) {
+    this._askNumberOffFlight = askNumberOffFlight;
+  }
   _AboutState createState() => _AboutState();
 }
 
 class _AboutState extends State<About> {
+  AskNumberOffFlight _askNumberOffFlight = new AskNumberOffFlight();
+  _AboutState() {
+    this._askNumberOffFlight = _askNumberOffFlight;
+  }
   @override
   Widget build(BuildContext context) {
-    return _buildCard();
+    return _buildCard(_askNumberOffFlight);
   }
 }
 
-Widget _buildCard() => SizedBox(
+Widget _buildCard(AskNumberOffFlight _askNumberOffFlight) => SizedBox(
       height: 370,
       child: Card(
         child: Column(
@@ -23,7 +29,7 @@ Widget _buildCard() => SizedBox(
             ListTile(
               title: Text('Ваш рейс: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text('КУКУРУЗНИК К-1'),
+              subtitle: Text(_askNumberOffFlight.askNumber),
               leading: Icon(
                 Icons.gps_fixed,
                 color: Colors.blue[500],
@@ -41,7 +47,7 @@ Widget _buildCard() => SizedBox(
             ListTile(
               title: Text('Время вылета: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text('13:55'),
+              subtitle: Text('15:55'),
               leading: Icon(
                 Icons.timelapse_outlined,
                 color: Colors.blue[500],
