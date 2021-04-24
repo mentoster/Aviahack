@@ -1,8 +1,8 @@
-import 'package:flutter_google_places/flutter_google_places.dart' as google_place;
-import 'package:google_maps_webservice/places.dart' as map_service;
+/*import 'package:flutter_google_places/flutter_google_places.dart' as google_place;
+import 'package:google_maps_webservice/places.dart' as map_service;*/
 import 'package:location/location.dart';
 
-Future _getLocation() async {
+/*Future _getLocation() async {
         Location location = new Location();
         LocationData _currentPosition = await location.getLocation();
         SharedPrefrence().setLatitude(_currentPosition.latitude.toString());
@@ -28,3 +28,4 @@ Future _getLocation() async {
           });
         
       }
+      */
