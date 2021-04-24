@@ -16,11 +16,15 @@ class _Chat extends State<Chat> {
   final TextEditingController _textController = new TextEditingController();
   AskNumberOffFlight askInfo = new AskNumberOffFlight();
   _Chat() {
+    startChat();
+  }
+  void startChat() async {
     Response("Приветствие");
+    await Future.delayed(const Duration(seconds: 2), () {});
     waitAnswer("Сменить номер рейса");
   }
+
   void waitAnswer(query) async {
-    await Future.delayed(const Duration(seconds: 2), () {});
     Response(query);
     numberOfScanMessage = 1;
   }
@@ -61,9 +65,9 @@ class _Chat extends State<Chat> {
   }
 
   void ReadMessage(String message) async {
-    WriteMessage("Это ваш рейс?");
     AirRoad airRoad = await PlaneApi("Москва", 0);
-    // await Future.delayed(const Duration(seconds: 3), () {});
+    WriteMessage("Это ваш рейс?");
+    print(airRoad.title);
     AirPoadShow(airRoad);
   }
 
