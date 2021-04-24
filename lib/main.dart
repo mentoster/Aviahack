@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:mysample/about.dart';
 import 'package:mysample/map.dart';
-import 'Chat.dart';
+import 'Chat/Chat.dart';
 
 void main() => runApp(MyApp());
 

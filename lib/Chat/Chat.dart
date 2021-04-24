@@ -73,9 +73,6 @@ class _Chat extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Dialogflow V2"),
-      ),
       body: new Column(children: <Widget>[
         new Flexible(
             child: new ListView.builder(
