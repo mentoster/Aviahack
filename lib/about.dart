@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mysample/Chat/StartMessage.dart';
 
 // TODO: взять ифнормацию из чата
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
+  // AskNumberOffFlight
   _AboutState createState() => _AboutState();
 }
 
@@ -59,7 +61,7 @@ Widget _buildCard() => SizedBox(
                   style: TextStyle(fontWeight: FontWeight.w500)),
               subtitle: Text('Вы находитесь около входа'),
               leading: Icon(
-                Icons.explore ,
+                Icons.explore,
                 color: Colors.blue[500],
               ),
             ),

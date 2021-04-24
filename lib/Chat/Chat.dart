@@ -12,9 +12,10 @@ class Chat extends StatefulWidget {
 }
 
 class _Chat extends State<Chat> {
+  
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
-  AskNumberOffFight askInfo = new AskNumberOffFight();
+  AskNumberOffFlight askInfo = new AskNumberOffFlight();
   _Chat() {
     Response("Приветствие");
     waitAnswer("Сменить номер рейса");

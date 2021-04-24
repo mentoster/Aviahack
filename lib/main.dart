@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysample/Chat/StartMessage.dart';
 import 'package:mysample/about.dart';
 import 'package:mysample/map/gmap.dart';
 import 'package:mysample/map/map.dart';
@@ -29,15 +30,12 @@ class MyStatefulWidget extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  AskNumberOffFlight _askNumberOfffight = new AskNumberOffFlight();
   int _selectedIndex = 0;
   // Chat chat = new Chat();
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static List<Widget> _widgetOptions = <Widget>[
-    MapSample(),
-    Chat(),
-    About(),
-  ];
+  static List<Widget> _widgetOptions = <Widget>[];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -52,8 +50,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         title: const Text('Твой аэропомощник'),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+          child: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          MapSample(),
+          Chat(),
+          About(),
+        ],
+      )),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
