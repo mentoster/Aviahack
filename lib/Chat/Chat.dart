@@ -18,6 +18,7 @@ class _Chat extends State<Chat> {
   AirRoad askInfo = new AirRoad();
   _Chat() {
     startChat();
+    numberOfScanMessage = 1;
   }
   void startChat() async {
     Response("Приветствие");
@@ -27,7 +28,6 @@ class _Chat extends State<Chat> {
 
   void waitAnswer(query) async {
     Response(query);
-    numberOfScanMessage = 1;
   }
 
   Widget _buildTextComposer() {
