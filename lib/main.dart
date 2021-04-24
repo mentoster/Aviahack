@@ -30,7 +30,10 @@ class MyStatefulWidget extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  AskNumberOffFlight _askNumberOfffight = new AskNumberOffFlight();
+  AskNumberOffFlight _askNumberOffFlight = new AskNumberOffFlight();
+  _MyStatefulWidgetState() {
+    _askNumberOffFlight.numberOfFlight = "1";
+  }
   int _selectedIndex = 0;
   // Chat chat = new Chat();
   static const TextStyle optionStyle =
@@ -48,14 +51,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Твой аэропомощник'),
+        backgroundColor: Colors.orange[700],
       ),
       body: Center(
           child: IndexedStack(
         index: _selectedIndex,
         children: [
-          MapSample(),
+          Gmap(),
           Chat(),
-          About(_askNumberOfffight),
+          About(_askNumberOffFlight),
         ],
       )),
       bottomNavigationBar: BottomNavigationBar(
@@ -75,7 +79,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.orange[700],
         onTap: _onItemTapped,
       ),
     );

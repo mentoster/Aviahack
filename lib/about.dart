@@ -29,10 +29,10 @@ Widget _buildCard(AskNumberOffFlight _askNumberOffFlight) => SizedBox(
             ListTile(
               title: Text('Ваш рейс: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text(_askNumberOffFlight.askNumber),
+              subtitle: Text(_askNumberOffFlight.numberOfFlight),
               leading: Icon(
                 Icons.gps_fixed,
-                color: Colors.blue[500],
+                color: Colors.orange[700],
               ),
             ),
             ListTile(
@@ -41,7 +41,7 @@ Widget _buildCard(AskNumberOffFlight _askNumberOffFlight) => SizedBox(
               subtitle: Text('13:30'),
               leading: Icon(
                 Icons.timelapse_outlined,
-                color: Colors.blue[500],
+                color: Colors.orange[700],
               ),
             ),
             ListTile(
@@ -50,7 +50,7 @@ Widget _buildCard(AskNumberOffFlight _askNumberOffFlight) => SizedBox(
               subtitle: Text('15:55'),
               leading: Icon(
                 Icons.timelapse_outlined,
-                color: Colors.blue[500],
+                color: Colors.orange[700],
               ),
             ),
             ListTile(
@@ -59,7 +59,7 @@ Widget _buildCard(AskNumberOffFlight _askNumberOffFlight) => SizedBox(
               subtitle: Text('A12'),
               leading: Icon(
                 Icons.exit_to_app,
-                color: Colors.blue[500],
+                color: Colors.orange[700],
               ),
             ),
             ListTile(
@@ -68,7 +68,7 @@ Widget _buildCard(AskNumberOffFlight _askNumberOffFlight) => SizedBox(
               subtitle: Text('Вы находитесь около входа'),
               leading: Icon(
                 Icons.explore,
-                color: Colors.blue[500],
+                color: Colors.orange[700],
               ),
             ),
           ],
