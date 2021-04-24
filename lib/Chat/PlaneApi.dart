@@ -39,7 +39,8 @@ Future<AirRoad> PlaneApi(String countryTo, int tryNumber) {
         airRoad.vehicle = buffMap["thread"]["vehicle"];
         airRoad.title = buffMap["thread"]["title"];
         airRoad.terminal = buffMap["terminal"];
-        airRoad.departure = buffMap["departue"];
+        airRoad.departure = buffMap["departure"];
+        print(airRoad.departure);
         if (tryNumber == 0) {
           break;
         } else {
