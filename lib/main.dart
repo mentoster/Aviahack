@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mysample/Chat/StartMessage.dart';
 import 'package:mysample/about.dart';
 import 'package:mysample/map/gmap.dart';
-import 'package:mysample/map/map.dart';
+import 'package:mysample/map/mapControroller.dart';
 import 'Chat/Chat.dart';
 
 void main() => runApp(MyApp());
@@ -38,7 +38,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   // Chat chat = new Chat();
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static List<Widget> _widgetOptions = <Widget>[];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -57,7 +56,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           child: IndexedStack(
         index: _selectedIndex,
         children: [
-          Gmap(),
+          MapController(),
           Chat(),
           About(_askNumberOffFlight),
         ],

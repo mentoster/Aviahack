@@ -33,73 +33,12 @@ class GmapState extends State<Gmap> {
           _controller.complete(controller);
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: SpeedDial(
-        /// both default to 16
-        marginEnd: 70,
-        marginBottom: 20,
-        // animatedIcon: AnimatedIcons.menu_close,
-        // animatedIconTheme: IconThemeData(size: 22.0),
-        /// This is ignored if animatedIcon is non null
-        icon: Icons.add,
-        activeIcon: Icons.remove,
-        // iconTheme: IconThemeData(color: Colors.grey[50], size: 30),
-        /// The label of the main button.
-        // label: Text("Open Speed Dial"),
-        /// The active label of the main button, Defaults to label if not specified.
-        // activeLabel: Text("Close Speed Dial"),
-        /// Transition Builder between label and activeLabel, defaults to FadeTransition.
-        // labelTransitionBuilder: (widget, animation) => ScaleTransition(scale: animation,child: widget),
-        /// The below button size defaults to 56 itself, its the FAB size + It also affects relative padding and other elements
-        buttonSize: 80.0,
-        visible: true,
-
-        /// If true user is forced to close dial manually
-        /// by tapping main button and overlay is not rendered.
-        closeManually: false,
-
-        /// If true overlay will render no matter what.
-        renderOverlay: false,
-        curve: Curves.bounceIn,
-        overlayColor: Colors.black,
-        overlayOpacity: 0.5,
-        onOpen: () => print('OPENING DIAL'),
-        onClose: () => print('DIAL CLOSED'),
-        tooltip: 'Speed Dial',
-        heroTag: 'speed-dial-hero-tag',
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _goToTheAirport,
+        label: Text('Показать аэропорт'),
+        icon: Icon(Icons.room_outlined),
         backgroundColor: Colors.orange[700],
-        foregroundColor: Colors.white,
-        elevation: 8.0,
-        shape: CircleBorder(),
-        // orientation: SpeedDialOrientation.Up,
-        // childMarginBottom: 2,
-        // childMarginTop: 2,
-        children: [
-          SpeedDialChild(
-            child: Icon(Icons.looks_one),
-            backgroundColor: Colors.white,
-            label: 'Первый',
-            labelStyle: TextStyle(fontSize: 18.0),
-            onTap: () => print('FIRST CHILD'),
-            onLongPress: () => print('FIRST CHILD LONG PRESS'),
-          ),
-          SpeedDialChild(
-            child: Icon(Icons.looks_two),
-            backgroundColor: Colors.white,
-            label: 'Второй',
-            labelStyle: TextStyle(fontSize: 18.0),
-            onTap: () => print('SECOND CHILD'),
-            onLongPress: () => print('SECOND CHILD LONG PRESS'),
-          ),
-          SpeedDialChild(
-            child: Icon(Icons.looks_3),
-            backgroundColor: Colors.white,
-            label: 'Третий',
-            labelStyle: TextStyle(fontSize: 18.0),
-            onTap: () => print('THIRD CHILD'),
-            onLongPress: () => print('THIRD CHILD LONG PRESS'),
-          ),
-        ],
       ),
     );
   }
