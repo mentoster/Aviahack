@@ -12,12 +12,13 @@ class Chat extends StatefulWidget {
 }
 
 class _Chat extends State<Chat> {
-  int numberOfScanMessage = 1;
+  int numberOfScanMessage = 0;
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
   AirRoad askInfo = new AirRoad();
   _Chat() {
     startChat();
+    numberOfScanMessage = 1;
   }
   void startChat() async {
     Response("Приветствие");
