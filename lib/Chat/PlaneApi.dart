@@ -17,7 +17,6 @@ Future<AirRoad> PlaneApi(String countryTo, int tryNumber) {
   var now = new DateTime.now();
   var formatter = new DateFormat('yyyy-MM-dd');
   String date = formatter.format(now);
-  print("i work");
   Map map;
   String url = 'https://api.rasp.yandex.net/v3.0/schedule/?apikey=' +
       token +

@@ -33,6 +33,7 @@ dependencies:
   qr_code_scanner: ^0.4.0
   pinch_zoom_image_last: ^0.3.2
   intl: ^0.17.0
+  shared_value: ^1.1.0
 
 dev_dependencies:
   flutter_test:

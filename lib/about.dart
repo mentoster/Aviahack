@@ -1,62 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:mysample/Chat/PlaneApi.dart';
+import 'package:mysample/main.dart';
+
+import 'package:shared_value/shared_value.dart';
 
 // TODO: взять ифнормацию из чата
 class About extends StatefulWidget {
-  AirRoad _airRoad = new AirRoad();
-  About(AirRoad airRoad) {
-    this._airRoad = airRoad;
-  }
   _AboutState createState() => _AboutState();
 }
 
 class _AboutState extends State<About> {
-  AirRoad _AirRoad = new AirRoad();
-  _AboutState() {
-    this._AirRoad = _AirRoad;
-  }
   @override
   Widget build(BuildContext context) {
-    return _buildCard(_AirRoad);
+    return _buildCard(dataShare.$);
   }
 }
 
-Widget _buildCard(AirRoad _airRoad) => SizedBox(
-      height: 370,
+Widget _buildCard(AirRoad airRoad) => SizedBox(
+      height: 500,
       child: Card(
         child: Column(
           children: [
             ListTile(
               title: Text('Ваш рейс: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              // subtitle: Text(_airRoad.numberOfFlight),
+              subtitle: Text(airRoad.number),
               leading: Icon(
                 Icons.gps_fixed,
                 color: Colors.orange[700],
               ),
             ),
             ListTile(
-              title: Text('Окончание регистрации: ',
+              title: Text('Отправление',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text('13:30'),
+              subtitle: Text(airRoad.departure),
               leading: Icon(
                 Icons.timelapse_outlined,
                 color: Colors.orange[700],
               ),
             ),
             ListTile(
-              title: Text('Время вылета: ',
+              title: Text('Терминал: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text('15:55'),
-              leading: Icon(
-                Icons.timelapse_outlined,
-                color: Colors.orange[700],
-              ),
-            ),
-            ListTile(
-              title: Text('Выход: ',
-                  style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text('A12'),
+              subtitle: Text(airRoad.terminal),
               leading: Icon(
                 Icons.exit_to_app,
                 color: Colors.orange[700],
@@ -68,6 +54,15 @@ Widget _buildCard(AirRoad _airRoad) => SizedBox(
               subtitle: Text('Вы находитесь около входа'),
               leading: Icon(
                 Icons.explore,
+                color: Colors.orange[700],
+              ),
+            ),
+            ListTile(
+              title: Text('Модель вашего самолета',
+                  style: TextStyle(fontWeight: FontWeight.w500)),
+              subtitle: Text(airRoad.vehicle),
+              leading: Icon(
+                Icons.airplanemode_active,
                 color: Colors.orange[700],
               ),
             ),
