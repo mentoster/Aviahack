@@ -25,8 +25,6 @@ class GmapState extends State<Gmap> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    print(size.width);
     return new Scaffold(
       body: GoogleMap(
         mapType: MapType.hybrid,
@@ -38,8 +36,8 @@ class GmapState extends State<Gmap> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: SpeedDial(
         /// both default to 16
-        marginEnd: size.width - 90,
-        marginBottom: 40,
+        marginEnd: 70,
+        marginBottom: 20,
         // animatedIcon: AnimatedIcons.menu_close,
         // animatedIconTheme: IconThemeData(size: 22.0),
         /// This is ignored if animatedIcon is non null
@@ -80,7 +78,7 @@ class GmapState extends State<Gmap> {
           SpeedDialChild(
             child: Icon(Icons.looks_one),
             backgroundColor: Colors.white,
-            label: 'First',
+            label: 'Первый',
             labelStyle: TextStyle(fontSize: 18.0),
             onTap: () => print('FIRST CHILD'),
             onLongPress: () => print('FIRST CHILD LONG PRESS'),
@@ -88,7 +86,7 @@ class GmapState extends State<Gmap> {
           SpeedDialChild(
             child: Icon(Icons.looks_two),
             backgroundColor: Colors.white,
-            label: 'Second',
+            label: 'Второй',
             labelStyle: TextStyle(fontSize: 18.0),
             onTap: () => print('SECOND CHILD'),
             onLongPress: () => print('SECOND CHILD LONG PRESS'),
@@ -96,7 +94,7 @@ class GmapState extends State<Gmap> {
           SpeedDialChild(
             child: Icon(Icons.looks_3),
             backgroundColor: Colors.white,
-            label: 'Third',
+            label: 'Третий',
             labelStyle: TextStyle(fontSize: 18.0),
             onTap: () => print('THIRD CHILD'),
             onLongPress: () => print('THIRD CHILD LONG PRESS'),
