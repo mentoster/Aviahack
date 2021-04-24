@@ -36,7 +36,8 @@ class MapSampleState extends State<MapSample> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheAirport,
         label: Text('Показать аэропорт'),
-        icon: Icon(Icons.room_outlined, color: Colors.orange[700]),
+        icon: Icon(Icons.room_outlined),
+        backgroundColor: Colors.orange[700],
       ),
     );
   }
