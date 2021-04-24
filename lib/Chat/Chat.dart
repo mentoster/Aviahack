@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:mysample/Chat/PlaneApi.dart';
-import 'package:mysample/Chat/StartMessage.dart';
 
 // TODO: сделать опрос информации о номере рейса и запихать в информацию на 3 вкладки( время поставить статическое, я не нашёл бесплатное апи)
 // TODO: Добавить базу данных?
@@ -14,7 +13,7 @@ class _Chat extends State<Chat> {
   int numberOfScanMessage = 0;
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
-  AskNumberOffFlight askInfo = new AskNumberOffFlight();
+  AirRoad askInfo = new AirRoad();
   _Chat() {
     startChat();
   }

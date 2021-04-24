@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:mysample/Chat/StartMessage.dart';
+import 'package:mysample/Chat/PlaneApi.dart';
 
 // TODO: взять ифнормацию из чата
 class About extends StatefulWidget {
-  AskNumberOffFlight _askNumberOffFlight = new AskNumberOffFlight();
-  About(AskNumberOffFlight askNumberOffFlight) {
-    this._askNumberOffFlight = askNumberOffFlight;
+  AirRoad _airRoad = new AirRoad();
+  About(AirRoad airRoad) {
+    this._airRoad = airRoad;
   }
   _AboutState createState() => _AboutState();
 }
 
 class _AboutState extends State<About> {
-  AskNumberOffFlight _askNumberOffFlight = new AskNumberOffFlight();
+  AirRoad _AirRoad = new AirRoad();
   _AboutState() {
-    this._askNumberOffFlight = _askNumberOffFlight;
+    this._AirRoad = _AirRoad;
   }
   @override
   Widget build(BuildContext context) {
-    return _buildCard(_askNumberOffFlight);
+    return _buildCard(_AirRoad);
   }
 }
 
-Widget _buildCard(AskNumberOffFlight _askNumberOffFlight) => SizedBox(
+Widget _buildCard(AirRoad _airRoad) => SizedBox(
       height: 370,
       child: Card(
         child: Column(
@@ -29,7 +29,7 @@ Widget _buildCard(AskNumberOffFlight _askNumberOffFlight) => SizedBox(
             ListTile(
               title: Text('Ваш рейс: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text(_askNumberOffFlight.numberOfFlight),
+              // subtitle: Text(_airRoad.numberOfFlight),
               leading: Icon(
                 Icons.gps_fixed,
                 color: Colors.orange[700],
