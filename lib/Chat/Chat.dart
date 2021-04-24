@@ -10,7 +10,6 @@ class Chat extends StatefulWidget {
 }
 
 class _Chat extends State<Chat> {
-  
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
   AskNumberOffFlight askInfo = new AskNumberOffFlight();
@@ -42,6 +41,13 @@ class _Chat extends State<Chat> {
               margin: new EdgeInsets.symmetric(horizontal: 4.0),
               child: new IconButton(
                   icon: new Icon(Icons.send),
+                  color: Colors.orange[700],
+                  onPressed: () => _handleSubmitted(_textController.text)),
+            ),
+            new Container(
+              margin: EdgeInsets.symmetric(horizontal: 0.0),
+              child: new IconButton(
+                  icon: new Icon(Icons.camera_alt),
                   color: Colors.orange[700],
                   onPressed: () => _handleSubmitted(_textController.text)),
             ),
