@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:mysample/map/gmap.dart';
+import 'package:mysample/map/floor.dart';
 
 class MapController extends StatefulWidget {
   MapController({Key? key}) : super(key: key);
@@ -25,15 +26,14 @@ class _MapControllerState extends State<MapController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Твой аэропомощник'),
-        backgroundColor: Colors.orange[700],
-      ),
       body: Center(
           child: IndexedStack(
         index: _selectedIndex,
         children: [
           Gmap(),
+          Floor("assets/images/b_1.png"),
+          Floor("assets/images/b_2.png"),
+          Floor("assets/images/b_2.png"),
         ],
       )),
       floatingActionButton: SpeedDial(
