@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mysample/about.dart';
 import 'package:mysample/map.dart';
@@ -48,7 +47,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
+        title: const Text('Твой аэропомощник'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
