@@ -42,6 +42,7 @@ class _Chat extends State<Chat> {
               margin: new EdgeInsets.symmetric(horizontal: 4.0),
               child: new IconButton(
                   icon: new Icon(Icons.send),
+                  color: Colors.orange[700],
                   onPressed: () => _handleSubmitted(_textController.text)),
             ),
           ],
