@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mysample/Chat/PlaneApi.dart';
 import 'package:mysample/main.dart';
-
 import 'package:shared_value/shared_value.dart';
+import 'package:share/share.dart';
 
 // TODO: взять ифнормацию из чата
 class About extends StatefulWidget {
@@ -57,7 +57,21 @@ Widget _buildCard(AirRoad airRoad) => SizedBox(
                 color: Colors.orange[700],
               ),
             ),
+            IconButton(
+                icon: Icon(
+                  Icons.share,
+                  color: Colors.orange[700],
+                ),
+                onPressed: () => shareInfo()),
           ],
         ),
       ),
     );
+void shareInfo() {
+  print("share");
+  // Share.shareFiles(['assets/images/aeroPort.jpeg'],
+  //     text:
+  //         'Я отлично провёл время в аэропорту Шереметьево в компании Айриса =)');
+  Share.share(
+      'Я отлично провёл время в аэропорту Шереметьево в компании Айриса =)');
+}
