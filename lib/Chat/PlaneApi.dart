@@ -22,7 +22,7 @@ Future<AirRoad> PlaneApi(String countryTo, int tryNumber) {
       token +
       ' &station=s9600213&date=' +
       date +
-      '&transport_types=plane&direction=none&limit=100';
+      '&transport_types=plane&direction=none&limit=1000';
 
   Future<String> GetJson() async {
     final response = await http.get(url);
@@ -37,11 +37,11 @@ Future<AirRoad> PlaneApi(String countryTo, int tryNumber) {
           .toLowerCase()
           .contains(countryTo.toLowerCase())) {
         var buffMap = parsed["schedule"][i];
-        airRoad.number = buffMap["thread"]["number"];
-        airRoad.vehicle = buffMap["thread"]["vehicle"];
-        airRoad.title = buffMap["thread"]["title"];
-        airRoad.terminal = buffMap["terminal"];
-        airRoad.departure = buffMap["departure"];
+        airRoad.number = buffMap["thread"]["number"].toString();
+        airRoad.vehicle = buffMap["thread"]["vehicle"].toString();
+        airRoad.title = buffMap["thread"]["title"].toString();
+        airRoad.terminal = buffMap["terminal"].toString();
+        airRoad.departure = buffMap["departure"].toString();
         print(airRoad.departure);
         if (tryNumber == 0) {
           break;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:mysample/Chat/PlaneApi.dart';
+import 'package:mysample/Chat/Commands.dart';
 import 'package:mysample/main.dart';
-import 'package:shared_value/shared_value.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 
 // TODO: сделать опрос информации о номере рейса и запихать в информацию на 3 вкладки( время поставить статическое, я не нашёл бесплатное апи)
@@ -14,6 +14,9 @@ class Chat extends StatefulWidget {
 
 class _Chat extends State<Chat> {
   int numberOfScanMessage = 0;
+  bool _checkWay = true;
+  String cityNow = '';
+  int tryNumber = 0;
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
   AirRoad askInfo = new AirRoad();
@@ -21,14 +24,14 @@ class _Chat extends State<Chat> {
     startChat();
   }
   void startChat() async {
-    Response("Приветствие");
+    response("Приветствие");
     await Future.delayed(const Duration(seconds: 2), () {});
     waitAnswer("Сменить номер рейса");
     numberOfScanMessage = 1;
   }
 
   void waitAnswer(query) async {
-    Response(query);
+    response(query);
   }
 
   Widget _buildTextComposer() {
@@ -38,6 +41,13 @@ class _Chat extends State<Chat> {
         margin: const EdgeInsets.symmetric(horizontal: 8.0),
         child: new Row(
           children: <Widget>[
+            new Container(
+                margin: EdgeInsets.symmetric(horizontal: 0.0),
+                child: new IconButton(
+                  icon: new Icon(Icons.camera_alt),
+                  color: Colors.orange[700],
+                  onPressed: () => scanQr(),
+                )),
             new Flexible(
               child: new TextField(
                 controller: _textController,
@@ -53,13 +63,6 @@ class _Chat extends State<Chat> {
                   color: Colors.orange[700],
                   onPressed: () => _handleSubmitted(_textController.text)),
             ),
-            new Container(
-                margin: EdgeInsets.symmetric(horizontal: 0.0),
-                child: new IconButton(
-                  icon: new Icon(Icons.camera_alt),
-                  color: Colors.orange[700],
-                  onPressed: () => scanQr(),
-                )),
           ],
         ),
       ),
@@ -71,25 +74,31 @@ class _Chat extends State<Chat> {
     _handleSubmitted(cameraScanResult);
   }
 
-  void ReadMessage(String messageText) async {
-    AirRoad airRoad = await PlaneApi(messageText, 0);
-    WriteMessage("Это ваш рейс?");
-    AirPoadShow(airRoad);
+  void checkWay(String messageText) async {
+    AirRoad airRoad = await PlaneApi(messageText, tryNumber);
+    writeMessage("Это ваш рейс?");
+    airPoadShow(airRoad);
     dataShare.value = airRoad;
+    numberOfScanMessage = 1;
   }
 
-  void AirPoadShow(AirRoad awWrite) {
-    WriteMessage("Название " +
+  void airPoadShow(AirRoad awWrite) {
+    print(awWrite.title);
+    print(awWrite.departure);
+    print(awWrite.terminal);
+    print(awWrite.vehicle);
+    writeMessage("Название " +
         awWrite.title +
         "\nОтправление: " +
         awWrite.departure +
         "\nТерминал: " +
         awWrite.terminal +
-        "\nМодель самолёта: " +
-        awWrite.vehicle);
+        "\nСамолёт: " +
+        awWrite.vehicle +
+        "\n\nЕсли хотите поменять город, \n то наберите команду 'другой город'");
   }
 
-  void WriteMessage(String message) {
+  void writeMessage(String message) {
     final ChatMessage messageSend = new ChatMessage(
       text: message,
       name: "Айрис",
@@ -100,10 +109,30 @@ class _Chat extends State<Chat> {
     });
   }
 
-  void Response(query) async {
+  void response(query) async {
+    String qr = query;
+    qr = qr.toLowerCase();
     if (numberOfScanMessage > 0) {
       --numberOfScanMessage;
-      ReadMessage(query);
+      if (qr == "да") {
+        writeMessage("Я запомнил информацию.");
+      } else if (qr == "нет") {
+        ++numberOfScanMessage;
+        ++tryNumber;
+        ++tryNumber;
+        checkWay(cityNow);
+      } else if (qr == "другой город") {
+        tryNumber = 0;
+        ++numberOfScanMessage;
+        writeMessage("Наберите город, куда вы вылетаете");
+      } else if (tryNumber == 0) {
+        cityNow = query;
+        checkWay(query);
+      }
+    } else if (qr == "другой город") {
+      tryNumber = 0;
+      ++numberOfScanMessage;
+      writeMessage("Наберите город, куда вы вылетаете");
     } else {
       _textController.clear();
       AuthGoogle authGoogle =
@@ -111,7 +140,7 @@ class _Chat extends State<Chat> {
       Dialogflow dialogflow =
           Dialogflow(authGoogle: authGoogle, language: Language.russian);
       AIResponse response = await dialogflow.detectIntent(query);
-      WriteMessage(response.getMessage() ??
+      writeMessage(response.getMessage() ??
           new TypeMessage(response.getListMessage()[0]).platform);
     }
   }
@@ -126,7 +155,7 @@ class _Chat extends State<Chat> {
     setState(() {
       _messages.insert(0, message);
     });
-    Response(text);
+    response(text);
   }
 
   @override

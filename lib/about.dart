@@ -24,7 +24,7 @@ Widget _buildCard(AirRoad airRoad) => SizedBox(
             ListTile(
               title: Text('Ваш рейс: ',
                   style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text(airRoad.number),
+              subtitle: Text(airRoad.number + ", " + airRoad.title),
               leading: Icon(
                 Icons.gps_fixed,
                 color: Colors.orange[700],
@@ -58,7 +58,7 @@ Widget _buildCard(AirRoad airRoad) => SizedBox(
               ),
             ),
             ListTile(
-              title: Text('Модель вашего самолета',
+              title: Text('Самолет',
                   style: TextStyle(fontWeight: FontWeight.w500)),
               subtitle: Text(airRoad.vehicle),
               leading: Icon(
