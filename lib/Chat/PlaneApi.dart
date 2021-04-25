@@ -9,6 +9,7 @@ class AirRoad {
   String number = '';
   String terminal = '';
   String vehicle = '';
+  String where = 'Вы около входа';
 }
 
 Future<AirRoad> PlaneApi(String countryTo, int tryNumber) {

@@ -71,7 +71,8 @@ class _Chat extends State<Chat> {
 
   void scanQr() async {
     String cameraScanResult = await scanner.scan();
-    _handleSubmitted(cameraScanResult);
+    sendPcrt(cameraScanResult);
+    // _handleSubmitted(cameraScanResult);
   }
 
   void checkWay(String messageText) async {
@@ -98,11 +99,33 @@ class _Chat extends State<Chat> {
         "\n\nЕсли хотите поменять город, \n то наберите команду 'другой город'");
   }
 
+  void sendPcrt(String qrNumber) {
+    String impgPath = 'assets/images/';
+    Map img = new Map();
+    img["000001"] = ["1.png", "Паркинга"];
+    img["000002"] = ["2.png", "Стойки негабаритного багажа"];
+    img["000003"] = ["3.png", "Выхода 107-108"];
+    print(img[qrNumber][0]);
+    dataShare.value.where = img[qrNumber][1];
+    writeMessage("Вы находитесь около " + img[qrNumber][1]);
+    final ChatMessage messageSend = new ChatMessage(
+        text: "1",
+        name: "Айрис",
+        type: false,
+        isImg: true,
+        path: impgPath + img[qrNumber][0]);
+    setState(() {
+      _messages.insert(0, messageSend);
+    });
+  }
+
   void writeMessage(String message) {
     final ChatMessage messageSend = new ChatMessage(
       text: message,
       name: "Айрис",
       type: false,
+      isImg: false,
+      path: '',
     );
     setState(() {
       _messages.insert(0, messageSend);
@@ -116,6 +139,11 @@ class _Chat extends State<Chat> {
       --numberOfScanMessage;
       if (qr == "да") {
         writeMessage("Я запомнил информацию.");
+        writeMessage("Заходите в аэропорт.");
+        response("пройти первый уровень проверки");
+        await Future.delayed(const Duration(seconds: 12), () {});
+        writeMessage(
+            "чтобы получить информацию дальше, вы можете набрать команду 'дальше' или отсканировать код на стене.");
       } else if (qr == "нет") {
         ++numberOfScanMessage;
         ++tryNumber;
@@ -151,6 +179,8 @@ class _Chat extends State<Chat> {
       text: text,
       name: "Вы",
       type: true,
+      isImg: false,
+      path: '',
     );
     setState(() {
       _messages.insert(0, message);
@@ -180,11 +210,18 @@ class _Chat extends State<Chat> {
 }
 
 class ChatMessage extends StatelessWidget {
-  ChatMessage({required this.text, required this.name, required this.type});
-
+  ChatMessage({
+    required this.text,
+    required this.name,
+    required this.type,
+    required this.isImg,
+    required this.path,
+  });
   final String text;
   final String name;
   final bool type;
+  final bool isImg;
+  final String path;
 
   List<Widget> otherMessage(context) {
     return <Widget>[
@@ -201,8 +238,13 @@ class ChatMessage extends StatelessWidget {
                 style: new TextStyle(fontWeight: FontWeight.bold)),
             new Container(
               margin: const EdgeInsets.only(top: 5.0),
-              child: new Text(text),
-            ),
+              child: !this.isImg
+                  ? new Text(text)
+                  : Image(
+                      image: AssetImage(path),
+                      height: 300,
+                    ),
+            )
           ],
         ),
       ),

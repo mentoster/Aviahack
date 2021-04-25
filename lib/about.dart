@@ -49,15 +49,6 @@ Widget _buildCard(AirRoad airRoad) => SizedBox(
               ),
             ),
             ListTile(
-              title: Text('Местоположение',
-                  style: TextStyle(fontWeight: FontWeight.w500)),
-              subtitle: Text('Вы находитесь около входа'),
-              leading: Icon(
-                Icons.explore,
-                color: Colors.orange[700],
-              ),
-            ),
-            ListTile(
               title: Text('Самолет',
                   style: TextStyle(fontWeight: FontWeight.w500)),
               subtitle: Text(airRoad.vehicle),
