@@ -3,6 +3,7 @@ import 'package:flutter_dialogflow/dialogflow_v2.dart';
 import 'package:mysample/Chat/PlaneApi.dart';
 import 'package:mysample/main.dart';
 import 'package:shared_value/shared_value.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
 
 // TODO: сделать опрос информации о номере рейса и запихать в информацию на 3 вкладки( время поставить статическое, я не нашёл бесплатное апи)
 // TODO: Добавить базу данных?
@@ -53,16 +54,21 @@ class _Chat extends State<Chat> {
                   onPressed: () => _handleSubmitted(_textController.text)),
             ),
             new Container(
-              margin: EdgeInsets.symmetric(horizontal: 0.0),
-              child: new IconButton(
+                margin: EdgeInsets.symmetric(horizontal: 0.0),
+                child: new IconButton(
                   icon: new Icon(Icons.camera_alt),
                   color: Colors.orange[700],
-                  onPressed: () => _handleSubmitted(_textController.text)),
-            ),
+                  onPressed: () => scanQr(),
+                )),
           ],
         ),
       ),
     );
+  }
+
+  void scanQr() async {
+    String cameraScanResult = await scanner.scan();
+    _handleSubmitted(cameraScanResult);
   }
 
   void ReadMessage(String messageText) async {
