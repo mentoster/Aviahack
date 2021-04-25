@@ -30,7 +30,6 @@ class _MapControllerState extends State<MapController> {
           child: IndexedStack(
         index: _selectedIndex,
         children: [
-          Gmap(),
           Floor("assets/images/b_1.png"),
           Floor("assets/images/b_2.png"),
           Floor("assets/images/b_2.png"),
@@ -77,24 +76,24 @@ class _MapControllerState extends State<MapController> {
         // childMarginBottom: 2,
         // childMarginTop: 2,
         children: [
-          SpeedDialChild(
-            child: Icon(Icons.map),
-            backgroundColor: Colors.white,
-            label: 'Карта',
-            labelStyle: TextStyle(fontSize: 18.0),
-            onTap: () {
-              _selectedIndex = 0;
-              _onItemTapped(_selectedIndex);
-            },
-            onLongPress: () => print('FIRST CHILD LONG PRESS'),
-          ),
+          // SpeedDialChild(
+          //   child: Icon(Icons.map),
+          //   backgroundColor: Colors.white,
+          //   label: 'Карта',
+          //   labelStyle: TextStyle(fontSize: 18.0),
+          //   onTap: () {
+          //     _selectedIndex = 1;
+          //     _onItemTapped(_selectedIndex);
+          //   },
+          //   onLongPress: () => print('FIRST CHILD LONG PRESS'),
+          // ),
           SpeedDialChild(
             child: Icon(Icons.looks_one),
             backgroundColor: Colors.white,
             label: 'Первый',
             labelStyle: TextStyle(fontSize: 18.0),
             onTap: () {
-              _selectedIndex = 1;
+              _selectedIndex = 0;
               _onItemTapped(_selectedIndex);
             },
             onLongPress: () => print('FIRST CHILD LONG PRESS'),
@@ -105,7 +104,7 @@ class _MapControllerState extends State<MapController> {
             label: 'Второй',
             labelStyle: TextStyle(fontSize: 18.0),
             onTap: () {
-              _selectedIndex = 2;
+              _selectedIndex = 1;
               _onItemTapped(_selectedIndex);
             },
             onLongPress: () => print('SECOND CHILD LONG PRESS'),
@@ -116,7 +115,7 @@ class _MapControllerState extends State<MapController> {
             label: 'Третий',
             labelStyle: TextStyle(fontSize: 18.0),
             onTap: () {
-              _selectedIndex = 3;
+              _selectedIndex = 2;
               _onItemTapped(_selectedIndex);
             },
             onLongPress: () => print('THIRD CHILD LONG PRESS'),
