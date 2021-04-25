@@ -19,12 +19,12 @@ class _Chat extends State<Chat> {
   AirRoad askInfo = new AirRoad();
   _Chat() {
     startChat();
-    numberOfScanMessage = 1;
   }
   void startChat() async {
     Response("Приветствие");
     await Future.delayed(const Duration(seconds: 2), () {});
     waitAnswer("Сменить номер рейса");
+    numberOfScanMessage = 1;
   }
 
   void waitAnswer(query) async {
